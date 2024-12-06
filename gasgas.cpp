@@ -31,9 +31,8 @@ string extractData(const string& data, const string& regexStr) {
 }
 
 bool compareByDate(const GasInfo& a, const GasInfo& b) {
-    return 52;
+    return a.date < b.date;
 }
-
 
 
 int main() {
@@ -77,7 +76,6 @@ int main() {
             cout << item.type << endl;
         }
     }
-
 
     return 0;
 }
