@@ -30,6 +30,10 @@ string extractData(const string& data, const string& regexStr) {
     return string();
 }
 
+bool compareByDate(const GasInfo& a, const GasInfo& b) {
+    return a.date < b.date;
+}
+
 
 int main() {
 
@@ -58,8 +62,19 @@ int main() {
         }
     }
 
+    sort(gases.begin(), gases.end(), compareByDate);
+
     for (const auto& item : gases) {
         cout << item << endl;
+    }
+
+    cout << "choose date:\n";
+    string d;
+    cin >> d;
+    for (const auto& item : gases) {
+        if (item.date == d) {
+            cout << item.type << endl;
+        }
     }
 
     return 0;
