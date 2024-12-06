@@ -34,6 +34,21 @@ bool compareByDate(const GasInfo& a, const GasInfo& b) {
     return a.date < b.date;
 }
 
+void sortByDate(vector<GasInfo>  &list) {
+    sort(list.begin(), list.end(), compareByDate);
+}
+
+void print_by_date(vector<GasInfo> list) {
+    cout << "choose date:\n";
+    string d;
+    cin >> d;
+    for (const auto& item : list) {
+        if (item.date == d) {
+            cout << item.type << endl;
+        }
+    }
+}
+
 
 int main() {
 
@@ -62,20 +77,13 @@ int main() {
         }
     }
 
-    sort(gases.begin(), gases.end(), compareByDate);
+    sortByDate(gases);
 
     for (const auto& item : gases) {
         cout << item << endl;
     }
 
-    cout << "choose date:\n";
-    string d;
-    cin >> d;
-    for (const auto& item : gases) {
-        if (item.date == d) {
-            cout << item.type << endl;
-        }
-    }
+    print_by_date(gases);
 
     return 0;
 }
